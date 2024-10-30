@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행지 추천 사이트</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('home') }}" class="nav-item">홈</a>
+            <a href="{{ url_for('map') }}" class="nav-item">지도</a>
+            <a href="/roulette" class="nav-item">룰렛</a>
+            <a href="/reviews" class="nav-item">리뷰</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="filter-section">
+            <h2>여행 조건 선택</h2>
+            <form id="filterForm">
+                <div class="form-group">
+                    <label for="ageGroup">나이대</label>
+                    <select id="ageGroup" name="ageGroup">
+                        <option value="">선택해주세요</option>
+                        <option value="20s">20대</option>
+                        <option value="30s">30대</option>
+                        <option value="40s">40대</option>
+                        <option value="50s">50대 이상</option>
+                    </select>
+                </div>
+                <!-- 다른 필터 옵션들... -->
+                <button type="submit" class="btn-primary">검색</button>
+            </form>
+        </div>
+
+        <div class="results-section">
+            <div id="destinationList"></div>
+        </div>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

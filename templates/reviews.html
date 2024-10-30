@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}여행 리뷰{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reviews.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="reviews-container">
+    <h1 class="page-title">여행 리뷰</h1>
+
+    <!-- 리뷰 작성 폼 -->
+    <div class="review-form-container">
+        <h2>새 리뷰 작성</h2>
+    <form id="reviewForm" class="review-form">
+        <div class="form-group">
+            <label for="destination">여행지</label>
+            <input 
+                type="text" 
+                id="destination" 
+                name="destination" 
+                required 
+                placeholder="방문하신 여행지를 입력해주세요"
+                autocomplete="off"
+            >
+        </div>
+
+            <div class="form-group">
+                <label>평점</label>
+                <div class="rating-input">
+                    <div id="ratingStars" class="star-rating">
+                        <span class="star" data-rating="1">★</span>
+                        <span class="star" data-rating="2">★</span>
+                        <span class="star" data-rating="3">★</span>
+                        <span class="star" data-rating="4">★</span>
+                        <span class="star" data-rating="5">★</span>
+                    </div>
+                    <input type="hidden" id="rating" name="rating" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="visitDate">방문일자</label>
+                    <input type="date" id="visitDate" name="visit_date">
+                </div>
+
+                <div class="form-group">
+                    <label for="weather">날씨</label>
+                    <select id="weather" name="weather">
+                        <option value="맑음">맑음</option>
+                        <option value="흐림">흐림</option>
+                        <option value="비">비</option>
+                        <option value="눈">눈</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="travelWith">동행인</label>
+                    <select id="travelWith" name="travel_with">
+                        <option value="혼자">혼자</option>
+                        <option value="연인">연인</option>
+                        <option value="친구">친구</option>
+                        <option value="가족">가족</option>
+                        <option value="단체">단체</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cost">경비(1인)</label>
+                    <select id="cost" name="cost">
+                        <option value="50000">5만원 미만</option>
+                        <option value="100000">5-10만원</option>
+                        <option value="200000">10-20만원</option>
+                        <option value="300000">20-30만원</option>
+                        <option value="500000">30만원 이상</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="reviewText">리뷰 내용</label>
+                <textarea id="reviewText" name="review_text" rows="5" required 
+                    placeholder="여행 경험을 공유해주세요. (추천 포인트, 주의사항, 꿀팁 등)"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">리뷰 등록</button>
+        </form>
+    </div>
+
+    <!-- 리뷰 필터 -->
+    <div class="review-filters">
+        <select id="filterDestination">
+            <option value="">모든 지역</option>
+            <option value="수도권">수도권</option>
+            <option value="강원도">강원도</option>
+            <option value="충청도">충청도</option>
+            <option value="전라도">전라도</option>
+            <option value="경상도">경상도</option>
+            <option value="제주도">제주도</option>
+        </select>
+        <select id="filterRating">
+            <option value="">모든 평점</option>
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆ 이상</option>
+            <option value="3">★★★☆☆ 이상</option>
+        </select>
+        <select id="filterSort">
+            <option value="newest">최신순</option>
+            <option value="rating">평점순</option>
+            <option value="recommended">추천순</option>
+        </select>
+    </div>
+
+    <!-- 리뷰 목록 -->
+    <div id="reviewsList" class="reviews-list">
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/reviews.js') }}"></script>
+{% endblock %}

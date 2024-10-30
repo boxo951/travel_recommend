@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}룰렛{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/roulette.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="roulette-container">
+    <h1 class="roulette-title">여행지 룰렛</h1>
+    <div class="roulette-wrapper">
+        <div class="roulette-pointer"></div>
+        <div class="roulette" id="roulette"></div>
+    </div>
+    <button id="spinButton" class="spin-button">돌리기</button>
+    <div id="result" class="result-display"></div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/roulette.js') }}"></script>
+{% endblock %}

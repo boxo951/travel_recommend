@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행 추천 사이트 - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="main-header">
+        <h1>대한민국의 모든것</h1>
+    </header>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('home') }}" class="nav-item">홈</a>
+            <a href="{{ url_for('map_page') }}" class="nav-item">지도</a>
+            <a href="{{ url_for('roulette_page') }}" class="nav-item">룰렛</a>
+            <a href="{{ url_for('reviews_page') }}" class="nav-item">리뷰</a>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
